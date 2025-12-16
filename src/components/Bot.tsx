@@ -1786,7 +1786,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
     if (!chunk) return;
 
     try {
-      currentState.sourceBuffer.appendBuffer(chunk);
+      currentState.sourceBuffer.appendBuffer(chunk as BufferSource);
       setTtsStreamingState((prevState) => ({
         ...prevState,
         chunkQueue: prevState.chunkQueue.slice(1),
@@ -1868,7 +1868,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
               const state = ttsStreamingState();
               if (state.sourceBuffer && !state.sourceBuffer.updating) {
                 try {
-                  state.sourceBuffer.appendBuffer(chunk);
+                  state.sourceBuffer.appendBuffer(chunk as BufferSource);
                   if (index === remainingChunks.length - 1) {
                     setTimeout(() => {
                       const finalState = ttsStreamingState();
@@ -2619,12 +2619,12 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
                 />
               )}
             </div>
-            <Badge
+            {/*<Badge
               footer={props.footer}
               badgeBackgroundColor={props.badgeBackgroundColor}
               poweredByTextColor={props.poweredByTextColor}
               botContainer={botContainer}
-            />
+            />*/}
           </div>
         </div>
       )}
